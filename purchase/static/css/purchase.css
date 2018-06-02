@@ -11,14 +11,16 @@
 	padding: 2%;
 }
 
-.table {
-	overflow-y: hidden;
-}
-
 tr {
 	height: 30pt;
 }
 
-#submit{
+.btn{
+	margin:0 0 1% 2%;
 	float: right;
+}
+
+a, a:hover, a:active, a:visited {
+	color: inherit;
+	text-decoration: none;
 }

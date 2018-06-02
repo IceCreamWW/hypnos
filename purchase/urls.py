@@ -4,7 +4,9 @@ from . import views
 urlpatterns = [
 	url(r'^$', views.purchase, name="purchase"),
 	url(r'^create$', views.create_order, name="create"),
+	url(r'^get_random$', views.get_random, name="get_random"),
 	url(r'^add$', views.add_item_to_order, name="add"),
+	url(r'^submit$', views.submit, name="submit"),
 	# url(r'^init_marks$', views.init_marks, name="init_marks"),
 	# url(r'^get_marker_plots$', views.get_marker_plots, name="get_marker_plots"),
 	# url(r'^search_movie$', views.search_movie, name="search-movie"),

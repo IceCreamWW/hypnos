@@ -11,12 +11,16 @@
 	
 	{% load static %}
     <link rel="stylesheet" type="text/css" href="{% static "css/purchase.css" %}">
-
+    <script src="{% static "js/purchase.js" %}"></script>
+	
 
 </head>
 <body>
 	<div class="form">
-		<table class="table table-bordered">
+		<h3></h3>
+		<button type="button" id="submit" class="btn btn-outline-secondary"><a href="#">Submit</a></button>
+		<button type="button" id="add" class="btn btn-outline-secondary">Add</button>
+		<table class="table table-bordered" id="table-items" data-order-id="-1">
 			<thead>
 			  <tr>
 			    <th>Item ID</th>
@@ -26,8 +30,8 @@
 			    <th>Total</th>
 			  </tr>
 			</thead>
-			<tbody id="items">
-			  <tr>
+			<tbody>
+			  <tr id="items-placeholder">
 			    <td></td>
 			    <td></td>
 			    <td></td>
@@ -36,8 +40,7 @@
 			  </tr>
 			</tbody>
 		</table>
-		<button type="button" id="add" class="btn btn-outline-secondary">Add</button>
-		<button type="button" id="submit" class="btn btn-outline-secondary">Submit</button>
+		
 	</div>
 </body>
 </html>

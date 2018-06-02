@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.db import connection
 from purchase.models import *
+from purchase.utils.utils import script1
 
 
 def purchase(request):
@@ -12,9 +13,9 @@ def purchase(request):
 
 @csrf_exempt
 def create_order(request):
-	if request.method == 'POST':
-		customer_id = request.POST['customer_id']
-
+	if request.method == 'GET':
+		
+		customer_id = request.GET['customer_id']
 		cur = connection.cursor()
 		cur.callproc('CreateOrder', [customer_id, 0])
 		cur.execute(sql='SELECT @_CreateOrder_1');
@@ -24,23 +25,31 @@ def create_order(request):
 		return JsonResponse({"order_id" : order_id}, safe=False)
 
 @csrf_exempt
+def get_random(request):
+	if request.method == 'GET':
+		data = script1(request.GET['order_id'])
+		item = Item.objects.get(id=data['id'])
+		data['name'] = item.name;
+		data['price'] = item.price;
+		return JsonResponse(data, safe=False)
+
+@csrf_exempt
 def add_item_to_order(request):
-	if request.method == 'POST':
-		item = Item.objects.get(id=request.POST['item_id'])
+	if request.method == 'GET':
+		item = Item.objects.get(id=request.GET['item_id'])
 		context = {
 			"item" : item,
-			"amount": request.POST['amount']
+			"amount": request.GET['amount']
 		}
 		cur = connection.cursor()
-		ret = cur.callproc('AddItemToOrder', [request.POST["order_id"], item.id, request.POST['amount']]) 
+		cur.callproc('AddItemToOrder', [request.GET["order_id"], item.id, request.GET['amount']]) 
 		cur.close();
 
-		if ret is None:
-			print("ret = None")
-		else:
-			print(ret)
-
-		cur.close()
 		return JsonResponse(context, safe=False);
 
-
+def submit(request):
+	if request.method == 'GET':
+		cur = connection.cursor()
+		cur.callproc('ConfirmOrder', [request.GET["order_id"],]) 
+		cur.close();
+		return render(request, "main/index.html", None)
