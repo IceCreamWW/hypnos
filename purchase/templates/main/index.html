@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>table</title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	
+	{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/purchase" %}">
+
+
+</head>
+<body>
+	<div class="form">
+		<table class="table table-bordered">
+			<thead>
+			  <tr>
+			    <th>Item ID</th>
+			    <th>Item Name</th>
+			    <th>Price</th>
+			    <th>Amount</th>
+			    <th>Total</th>
+			  </tr>
+			</thead>
+			<tbody id="items">
+			  <tr>
+			    <td></td>
+			    <td></td>
+			    <td></td>
+			    <td></td>
+			    <td></td>
+			  </tr>
+			</tbody>
+		</table>
+		<div></div>
+	</div>
+</body>
+</html>

@@ -4,10 +4,11 @@ from purchase.models import *
 # Create your models here.
 
 REFUND_REQUEST_STATUS = (
-	(0, 'unchecked'),
-	(1, 'user_dropped'),
-	(2, 'accepted'),
-	(3, 'declined')
+	(0, 'created'),
+	(1, 'unchecked'),
+	(2, 'user_dropped'),
+	(3, 'accepted'),
+	(4, 'declined')
 )
 
 
