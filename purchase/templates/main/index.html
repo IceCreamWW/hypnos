@@ -3,14 +3,14 @@
 <head>
 	<title>table</title>
 	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	
 	{% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/purchase" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/purchase.css" %}">
 
 
 </head>
@@ -36,7 +36,8 @@
 			  </tr>
 			</tbody>
 		</table>
-		<div></div>
+		<button type="button" id="add" class="btn btn-outline-secondary">Add</button>
+		<button type="button" id="submit" class="btn btn-outline-secondary">Submit</button>
 	</div>
 </body>
 </html>

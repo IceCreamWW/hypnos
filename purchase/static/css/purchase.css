@@ -1,16 +1,24 @@
 * {
-			padding: 0;
-			margin: 0;
-		}
-		.form {
-			margin: 5% auto;
-			width: 80%;
-			height: 50%;
-			border: 5px solid rgba(0,0,0,0.2);
-			border-radius: 5px;
-			padding: 2%;
-		}
+	padding: 0;
+	margin: 0;
+}
+.form {
+	margin: 5% auto;
+	width: 80%;
+	height: 50%;
+	border: 5px solid rgba(0,0,0,0.2);
+	border-radius: 5px;
+	padding: 2%;
+}
 
-		.table {
-			overflow-y: hidden;
-		}
+.table {
+	overflow-y: hidden;
+}
+
+tr {
+	height: 30pt;
+}
+
+#submit{
+	float: right;
+}
