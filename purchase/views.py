@@ -36,7 +36,7 @@ def get_random(request):
 @csrf_exempt
 def add_item_to_order(request):
 	if request.method == 'GET':
-		item = Item.objects.get(id=request.GET['item_id'])
+		item = Item.objects.get(id=request.GET['id'])
 		context = {
 			"item" : item,
 			"amount": request.GET['amount']
@@ -45,7 +45,7 @@ def add_item_to_order(request):
 		cur.callproc('AddItemToOrder', [request.GET["order_id"], item.id, request.GET['amount']]) 
 		cur.close();
 
-		return JsonResponse(context, safe=False);
+		return JsonResponse({"status" : True}, safe=False);
 
 def submit(request):
 	if request.method == 'GET':

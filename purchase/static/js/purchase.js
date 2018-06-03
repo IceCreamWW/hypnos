@@ -1,3 +1,4 @@
+var total = 0;	
 $(function() {
 	$("#add").click(function(event) {
 		var order_id = $('#table-items').data('order-id')
@@ -25,6 +26,20 @@ function add(order_id) {
 		$("<td>" + json['price'] + "</td>").appendTo('tr.cur');
 		$("<td>" + json['amount'] + "</td>").appendTo('tr.cur');
 		$("<td>" + json['price'] * json['amount'] + "</td>").appendTo('tr.cur');
+		
+		total += json['price'] * json['amount'];
+		delete json['name'];
+		delete json['price'];
+
+		$('#total').text("Total: " + total);
+
+		json["order_id"] = order_id;
+
+		$.getJSON('add', json, function(json, textStatus) {
+			if (!json['status']) {
+				alert("Error");
+			}
+		});
 	});
 }
 
